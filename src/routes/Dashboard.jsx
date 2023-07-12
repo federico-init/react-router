@@ -13,11 +13,11 @@ export default function Dashboard() {
     !!setIsLogged(JSON.parse(localStorage.getItem("auth")));
   }, []);
 
-  return isLogged ? (
-    <div className={styles.Dashboard}>
-      <h1>{`Welcome ${isLogged.name}!`}</h1>
-    </div>
-  ) : (
-    navigate("/login")
+  return (
+    isLogged && (
+      <div className={styles.Dashboard}>
+        <h1>{`Welcome ${isLogged.name}!`}</h1>
+      </div>
+    )
   );
 }
