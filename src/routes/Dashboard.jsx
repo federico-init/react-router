@@ -15,7 +15,7 @@ export default function Dashboard() {
 
   return isLogged ? (
     <div className={styles.Dashboard}>
-      <h1>{`Welcome!`}</h1>
+      <h1>{`Welcome ${isLogged.name}!`}</h1>
     </div>
   ) : (
     navigate("/login")
