@@ -16,7 +16,20 @@ export default function Dashboard() {
   return (
     isLogged && (
       <div className={styles.Dashboard}>
-        <h1>{`Welcome ${isLogged.name}!`}</h1>
+        <h1>{`Welcome, ${isLogged.name}!`}</h1>
+        <h4>Your personal data: </h4>
+        <div className={styles.dashboardData}>
+          <ul>
+            <li>{`Name: ${isLogged.name}`}</li>
+            <li>{`Username: ${isLogged.username}`}</li>
+            <li>{`Email: ${isLogged.email}`}</li>
+            <li>{`Age: ${isLogged.age}`}</li>
+            <li>{`Country: ${isLogged.country}`}</li>
+            <li>{`Your bookings: ${isLogged.past_bookings}`}</li>
+            <li>{`Your favorite location: ${isLogged.favorite_location}`}</li>
+          </ul>
+          <img src={isLogged.profile_photo} alt={isLogged.name} />
+        </div>
       </div>
     )
   );
