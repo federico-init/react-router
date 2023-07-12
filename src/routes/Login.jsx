@@ -11,6 +11,8 @@ export default function Login() {
   const [password, setPassword] = useState("");
   // definisco uno stato per salvare gli utenti
   const [userData, setUserData] = useState([]);
+  // definisco uno state per mostrare un messaggio di errore
+  const [showError, setShowError] = useState("");
 
   useEffect(() => {
     fetch("https://api.npoint.io/7f885de34533fd8f892a")
@@ -27,22 +29,19 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      if (
-        !!userData.find(
-          (user) => user.username === username && user.password === password
-        )
-      ) {
-        const loggedUser = userData.find(
-          (user) => user.username === username && user.password === password
-        );
-        localStorage.setItem("auth", JSON.stringify(loggedUser));
-        navigate("/dashboard");
-      } else {
-        throw new Error("Wrong credentials! Please try again");
-      }
-    } catch (error) {
-      alert(error);
+    if (
+      !!userData.find(
+        (user) => user.username === username && user.password === password
+      )
+    ) {
+      setShowError("");
+      const loggedUser = userData.find(
+        (user) => user.username === username && user.password === password
+      );
+      localStorage.setItem("auth", JSON.stringify(loggedUser));
+      navigate("/dashboard");
+    } else {
+      setShowError("Wrong credentials. Please try again");
     }
   };
 
@@ -66,6 +65,7 @@ export default function Login() {
         />
         <input type="submit" value="Submit" />
       </form>
+      {showError && <p>{showError}</p>}
     </div>
   );
 }

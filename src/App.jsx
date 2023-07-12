@@ -8,8 +8,10 @@ function App() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    if (confirm("Log out?")) localStorage.clear();
-    navigate("/login");
+    if (confirm("Log out?")) {
+      localStorage.clear();
+      navigate("/login");
+    }
   };
 
   return (
