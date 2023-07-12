@@ -47,7 +47,7 @@ function App() {
             </>
           ) : (
             <li>
-              <Link to="/dashboard">
+              <Link to="/login">
                 <i className="fa-solid fa-arrow-right-to-bracket"></i> Login
               </Link>
             </li>
